@@ -27,7 +27,7 @@ from extract_utils.utils import (
 
 namespace_imports = [
     'hardware/oplus',
-    'vendor/realme/sm8250-common',
+    'vendor/oppo/sm8250-common',
     'vendor/qcom/opensource/display',
 ]
 

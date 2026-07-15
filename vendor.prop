@@ -1,5 +1,5 @@
 # Bluetooth
-bluetooth.device.default_name=OPPO Find X3
+bluetooth.device.default_name=OPPO Find X2 Pro
 
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
@@ -9,4 +9,4 @@ ro.crypto.volume.metadata.method=dm-default-key
 persist.radio.multisim.config=dsds
 
 # USB
-vendor.usb.product_string=OPPO Find X3
+vendor.usb.product_string=OPPO Find X2 Pro

@@ -1,83 +1,13 @@
-#
-# Copyright (C) 2018 The LineageOS Project
-#
-# SPDX-License-Identifier: Apache-2.0
-#
+DEVICE_PATH := device/oppo/heal
 
-# AAPT
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+# Screen density
+PRODUCT_PROPERTY_OVERRIDES +=     ro.sf.lcd_density=510
 
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_platform_info_intcodec.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec.xml \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:$(TARGET_COPY_OUT_ODM)/etc/sound_trigger_mixer_paths.xml \
-    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:$(TARGET_COPY_OUT_ODM)/etc/sound_trigger_platform_info.xml
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 2412
-TARGET_SCREEN_WIDTH := 1080
-
-# Commondcs
-PRODUCT_PACKAGES += \
-    vendor.oplus.hardware.commondcs-service
-
-# Device init scripts
-PRODUCT_PACKAGES += \
-    init.horee.hw.rc \
-    init.horee.hw.rc.recovery \
-    fstab.qcom \
-    fstab.qcom.ramdisk
-
-# Display
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/display_id_4630946358012694401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630946358012694401.xml
-    
-# LiveDisplay
-$(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_SE,false)
+# Permissions
+PRODUCT_COPY_FILES +=     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:/etc/permissions/android.hardware.camera.flash-autofocus.xml     frameworks/native/data/etc/android.hardware.camera.front.xml:/etc/permissions/android.hardware.camera.front.xml     frameworks/native/data/etc/android.hardware.fingerprint.xml:/etc/permissions/android.hardware.fingerprint.xml     frameworks/native/data/etc/android.hardware.nfc.xml:/etc/permissions/android.hardware.nfc.xml
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay-lineage
+DEVICE_PACKAGE_OVERLAYS +=     $(DEVICE_PATH)/overlay
 
-PRODUCT_PACKAGES += \
-    KeyHandlerResTarget \
-    OPlusFrameworksResTarget \
-    OPlusSettingsProviderResTarget \
-    OPlusSettingsResTarget \
-    OPlusSystemUIResTarget
-
-# Oplus camera
-$(call inherit-product-if-exists, vendor/oplus/camera/opluscamera.mk)
-
-# Osense
-PRODUCT_PACKAGES += \
-    vendor.oplus.hardware.osense.client-service
-
-# PowerShare
-PRODUCT_PACKAGES += \
-    vendor.lineage.powershare-service.oplus
-
-# IR Blaster
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
-
-PRODUCT_PACKAGES += \
-    android.hardware.ir-service.oplus
-    
-# Shipping API
-PRODUCT_SHIPPING_API_LEVEL := 30
-
-# Soong namespaces
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
-
-# Touch
-$(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,INCLUDE_DIR,$(LOCAL_PATH)/touch/include)
-
-# Inherit from the common OEM chipset makefile.
-$(call inherit-product, device/realme/sm8250-common/common.mk)
-
-# Inherit from the proprietary files makefile.
-$(call inherit-product, vendor/oppo/horee/horee-vendor.mk)
+# Vendor proprietary files
+$(call inherit-product, vendor/oppo/heal/BoardConfigVendor.mk)

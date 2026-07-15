@@ -4,15 +4,15 @@
 //
 
 cc_library_static {
-    name: "libinit_horee",
+    name: "libinit_heal",
     recovery_available: true,
     shared_libs: ["libbase"],
-    srcs: ["init_horee.cpp"],
+    srcs: ["init_heal.cpp"],
 }
 
 prebuilt_etc {
-    name: "init.horee.hw.rc",
-    src: "init.horee.hw.rc",
+    name: "init.heal.hw.rc",
+    src: "init.heal.hw.rc",
     sub_dir: "init",
     device_specific: true,
     recovery_available: true,
