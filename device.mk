@@ -11,3 +11,4 @@ DEVICE_PACKAGE_OVERLAYS +=     $(DEVICE_PATH)/overlay
 
 # Vendor proprietary files
 $(call inherit-product, vendor/oppo/heal/BoardConfigVendor.mk)
+PRODUCT_PACKAGES += heal_orms_core_config heal_power_monitor_config
